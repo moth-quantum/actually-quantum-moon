@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <!-- Must match manifest.json's `filename`: OWML loads the mod by that name. -->
+    <AssemblyName>ActuallyQuantumMoon</AssemblyName>
+    <RootNamespace>ActuallyQuantumMoon</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Copyright>Copyright © 2026 Moth Quantum</Copyright>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <!-- The vendored MicroMoth source is written against implicit usings, so enabling
+         them here keeps that file unmodified. As a consequence `Object` is ambiguous
+         between System.Object and UnityEngine.Object, and UnityEngine.Object is
+         qualified explicitly throughout this project. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- CS8632: the vendored source uses nullable annotations without a #nullable
+         context; suppressed here rather than editing it. -->
+    <NoWarn>MSB3270;CS8632</NoWarn>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="OWML" Version="2.16.3" />
+    <PackageReference Include="OuterWildsGameLibs" Version="1.1.15.1018" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default-config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- Runtime assets only. Assets/ can also hold material the mod never reads -
+         preview renders, wavetable dumps, job metadata - which is not packaged.
+         The fake_* patterns match nothing in a clean checkout; they exist so that a
+         local build picks up simulator fallbacks if they have been regenerated. -->
+    <None Include="Assets\entanglement_ramp.bin;
+                   Assets\entanglement_transmittance_ramp.bin;
+                   Assets\quantum_tone_beta*.wav;
+                   Assets\fake_tone_beta*.wav;
+                   Assets\quantum_glitch_bits_s*.txt;
+                   Assets\fake_glitch_bits_s*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Assets\%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Apache-2.0 section 4(a): MicroMoth is compiled into the assembly, so a copy of
+         its licence must accompany the distribution, not only the repository. -->
+    <None Include="..\LICENSE;ThirdParty\LICENSE-MicroMoth.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+</Project>

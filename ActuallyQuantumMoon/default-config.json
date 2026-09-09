@@ -1,0 +1,8 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ow-mods/owml/master/schemas/config_schema.json",
+  "enabled": true,
+  "settings": {
+    "glitchToneVolume": 0.18,
+    "glitchTickSeconds": 3
+  }
+}
