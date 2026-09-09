@@ -9,8 +9,8 @@ Four effects driven by quantum computation:
   by a quantum circuit running in-game, with strength set by how far north you are
   standing.
 - **Decoherence flashes.** Every few seconds inside the moon, the world briefly glitches.
-  Whether it glitches at all is decided by a measurement of `Ry(θ)|0>` recorded on quantum
-  hardware, one outcome per tick, so the glitch rate follows `sin²(θ/2)`: almost never at
+  Whether it glitches at all is decided by a measurement of $R_y(\theta)|0\rangle$ recorded on quantum
+  hardware, one outcome per tick, so the glitch rate follows $\sin²(\theta/2)$: almost never at
   the south pole, almost always at the north. The visual glitch/blur strength works as for 
   the scout photos.
 - **A decoherence tone.** The accompanying sound is a wavetable that was encoded into a
@@ -20,7 +20,7 @@ Four effects driven by quantum computation:
   an entanglement-shader job on the Moth API. Seen from outside it is the film in
   reflection; standing on the surface and looking up, it is the same film in transmission.
 
-The moon is read as a Bloch sphere throughout: your latitude is the polar angle θ, and
+The moon is read as a Bloch sphere throughout: your latitude is the polar angle $\theta$, and
 that single number drives the blur and the glitch rate together.
 
 ## Configuration
