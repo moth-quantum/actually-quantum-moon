@@ -1,0 +1,32 @@
+Actually Quantum Moon
+Copyright 2026 Moth Quantum
+
+This product includes software developed at Moth Quantum
+(https://mothquantum.com).
+
+------------------------------------------------------------------------------
+Third-party code included in this distribution
+------------------------------------------------------------------------------
+
+MicroMoth (ActuallyQuantumMoon/ThirdParty/MicroMoth.cs)
+  Vendored, with modifications, from https://github.com/moth-quantum/MicroMoth
+  (C) Copyright Moth 2026.
+  (C) Copyright IBM 2023. (Original MicroQiskit)
+  Licensed under the Apache License, Version 2.0.
+  The modifications are stated at the top of the file.
+
+QuantumBlur (ActuallyQuantumMoon/QuantumBlur.cs)
+  A C# port, with modifications, of https://github.com/moth-quantum/QuantumBlur,
+  which is itself derived from Qiskit.
+  (C) Copyright Moth Quantum 2026.
+  (C) Copyright IBM 2020s. (Original quantumblur.py)
+  Licensed under the Apache License, Version 2.0.
+  The modifications are stated at the top of the file.
+
+------------------------------------------------------------------------------
+
+Actually Quantum Moon is an unofficial, fan-made modification for Outer Wilds.
+It is not affiliated with, endorsed by, or sponsored by Mobius Digital or
+Annapurna Interactive. "Outer Wilds" and all related marks and assets are the
+property of their respective owners. No game assets or assemblies are
+redistributed with this mod.

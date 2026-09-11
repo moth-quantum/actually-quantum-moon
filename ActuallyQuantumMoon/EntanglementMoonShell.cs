@@ -32,7 +32,7 @@ namespace ActuallyQuantumMoon;
 /// carried to the GPU through mesh UVs on a generated cap
 /// (<see cref="EntanglementCap"/>) and drawn with a shader Outer Wilds already ships. A
 /// custom fragment shader can only be compiled by the Unity Editor, which this project
-/// does not depend on; see UNITY.md.
+/// deliberately does not depend on.
 /// </para>
 /// </remarks>
 public static class EntanglementMoonShell
@@ -382,7 +382,8 @@ public static class EntanglementMoonShell
 				$"[ActuallyQuantumMoon] '{RampShaderAlpha}' is not in this build of the " +
 				"game, so there is nothing to draw the shell with - it is DISABLED. " +
 				"It was confirmed present in 1.1.16; if the game has been updated, " +
-				"re-run a shader enumeration (see UNITY.md).",
+				"enumerate Resources.FindObjectsOfTypeAll<Shader>() in a running game to " +
+				"find a replacement.",
 				MessageType.Error);
 			return false;
 		}

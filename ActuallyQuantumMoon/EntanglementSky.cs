@@ -251,8 +251,9 @@ internal static class EntanglementSky
 		{
 			Console.WriteLine(
 				$"[ActuallyQuantumMoon] Entanglement sky DISABLED - the game no longer " +
-				$"ships '{AdditiveShader}'. See UNITY.md for how to find a replacement from " +
-				"inside the game.", MessageType.Error);
+				$"ships '{AdditiveShader}'. Enumerate " +
+				"Resources.FindObjectsOfTypeAll<Shader>() in a running game to find a " +
+				"replacement.", MessageType.Error);
 			return false;
 		}
 

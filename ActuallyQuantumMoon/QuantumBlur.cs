@@ -1,3 +1,27 @@
+// (C) Copyright Moth Quantum 2026.
+// (C) Copyright IBM 2020s. (Original QuantumBlur / Qiskit)
+// Apache-2.0
+//
+// A C# port of the image-domain half of https://github.com/moth-quantum/QuantumBlur
+// (quantumblur/quantumblur.py), which is itself derived from Qiskit. Per Apache-2.0
+// 4(b), this file has been altered from the original; the changes are, in full:
+//
+//  1. Translated from Python to C#, against the MicroMoth library vendored in
+//     ThirdParty/MicroMoth.cs rather than Qiskit, and against Unity's Color32 pixel
+//     buffers rather than PIL images. The counterparts of make_line, height2circuit,
+//     blur_height and circuit2height are noted at their call sites below.
+//
+//  2. The grid layout, per-qubit rates and basis indices are precomputed once per
+//     image size and cached, and the statevector is read directly instead of being
+//     sampled, so the blur runs inside a frame budget.
+//
+//  3. Decoding does not follow probs2height/heights2image: brightness is recovered
+//     without their per-image rescale, so that xi = 0 returns the input unchanged.
+//     See the comment at the decode step below.
+//
+// The quantum content of the algorithm - the Gray-code encoding, the RX rotation
+// layer and the amplitude/brightness mapping - is otherwise unchanged.
+
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -7,7 +31,7 @@ using UnityEngine;
 namespace ActuallyQuantumMoon;
 
 /// <summary>
-/// A C# implementation of the image-domain half of
+/// A C# port of the image-domain half of
 /// <see href="https://github.com/moth-quantum/QuantumBlur">moth-quantum/QuantumBlur</see>,
 /// built on the MicroMoth library vendored in <c>ThirdParty/MicroMoth.cs</c> for the
 /// quantum circuit and simulator.

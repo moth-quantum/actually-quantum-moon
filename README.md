@@ -48,13 +48,23 @@ The generation pipeline itself is not part of this repository.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE); both ship with every release.
 
-This mod bundles a modified copy of
-[MicroMoth](https://github.com/moth-quantum/MicroMoth), © Moth 2026 and © IBM 2023
-(original MicroQiskit), licensed under Apache-2.0. The full license text is in
-[`ActuallyQuantumMoon/ThirdParty/LICENSE-MicroMoth.txt`](ActuallyQuantumMoon/ThirdParty/LICENSE-MicroMoth.txt)
-and ships with every release. The modifications are stated in full at the top of
-[`ThirdParty/MicroMoth.cs`](ActuallyQuantumMoon/ThirdParty/MicroMoth.cs): two added
-`using` directives for the `net48` target, and the hoisting of per-gate trigonometry out
-of the simulator's inner loops. No quantum behaviour or public API was changed.
+Two parts of this mod are derived from Apache-2.0 code of ours and carry their own
+copyright notices:
+
+- [`ThirdParty/MicroMoth.cs`](ActuallyQuantumMoon/ThirdParty/MicroMoth.cs) is a modified
+  copy of [MicroMoth](https://github.com/moth-quantum/MicroMoth), used for the circuits
+  and the simulator.
+- [`QuantumBlur.cs`](ActuallyQuantumMoon/QuantumBlur.cs) is a C# port of the image-domain
+  half of [QuantumBlur](https://github.com/moth-quantum/QuantumBlur).
+
+Each file states its provenance and the changes made to it, in full, in its header, as
+Apache-2.0 4(b) and 4(c) require.
+
+## Disclaimer
+
+Actually Quantum Moon is an unofficial, fan-made modification for Outer Wilds. It is not
+affiliated with, endorsed by, or sponsored by Mobius Digital or Annapurna Interactive.
+"Outer Wilds" and all related marks and assets are the property of their respective
+owners. No game assets or assemblies are redistributed with this mod.
