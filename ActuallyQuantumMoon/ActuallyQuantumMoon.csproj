@@ -49,7 +49,7 @@
     <!-- Apache-2.0 section 4(a): the mod and the third-party code compiled into the
          assembly are all Apache-2.0, so a copy of the licence and of the attribution
          notices must accompany the distribution, not only the repository. -->
-    <None Include="..\LICENSE;..\NOTICE;ThirdParty\LICENSE-MicroMoth.txt">
+    <None Include="..\LICENSE;..\NOTICE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>%(Filename)%(Extension)</Link>
     </None>

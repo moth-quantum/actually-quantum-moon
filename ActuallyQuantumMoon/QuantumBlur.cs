@@ -1,6 +1,6 @@
 // (C) Copyright Moth Quantum 2026.
 // (C) Copyright IBM 2020s. (Original QuantumBlur / Qiskit)
-// Apache-2.0
+// Apache-2.0 (full text in the LICENSE file shipped with this mod)
 //
 // A C# port of the image-domain half of https://github.com/moth-quantum/QuantumBlur
 // (quantumblur/quantumblur.py), which is itself derived from Qiskit. Per Apache-2.0

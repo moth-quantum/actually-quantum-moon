@@ -12,7 +12,9 @@ MicroMoth (ActuallyQuantumMoon/ThirdParty/MicroMoth.cs)
   Vendored, with modifications, from https://github.com/moth-quantum/MicroMoth
   (C) Copyright Moth 2026.
   (C) Copyright IBM 2023. (Original MicroQiskit)
-  Licensed under the Apache License, Version 2.0.
+  Licensed under the Apache License, Version 2.0 - the same licence as this
+  distribution as a whole, so the LICENSE file shipped here is its licence
+  copy for the purposes of section 4(a).
   The modifications are stated at the top of the file.
 
 QuantumBlur (ActuallyQuantumMoon/QuantumBlur.cs)
@@ -20,7 +22,9 @@ QuantumBlur (ActuallyQuantumMoon/QuantumBlur.cs)
   which is itself derived from Qiskit.
   (C) Copyright Moth Quantum 2026.
   (C) Copyright IBM 2020s. (Original quantumblur.py)
-  Licensed under the Apache License, Version 2.0.
+  Licensed under the Apache License, Version 2.0 - the same licence as this
+  distribution as a whole, so the LICENSE file shipped here is its licence
+  copy for the purposes of section 4(a).
   The modifications are stated at the top of the file.
 
 ------------------------------------------------------------------------------

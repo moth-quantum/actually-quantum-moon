@@ -1,6 +1,6 @@
 ﻿// (C) Copyright Moth 2026.
 // (C) Copyright IBM 2023. (Original MicroQiskit)
-// Apache-2.0
+// Apache-2.0 (full text in the LICENSE file shipped with this mod)
 //
 // Vendored from https://github.com/moth-quantum/MicroMoth
 // (versions/Csharp/MicroMoth/MicroMoth.cs). Per Apache-2.0 4(b), the changes made here
