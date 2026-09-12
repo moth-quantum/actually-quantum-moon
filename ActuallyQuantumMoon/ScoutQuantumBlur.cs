@@ -18,8 +18,8 @@ namespace ActuallyQuantumMoon;
 /// <para>
 /// The blur runs at <see cref="ProcessResolution"/> rather than the native 512, because
 /// the statevector holds one amplitude per pixel and a rotation is applied per qubit, so
-/// the cost goes as size^2 * log(size) - halving the edge is a 4.5x saving, measured
-/// below. The resulting upscale softens
+/// the cost goes as size^2 * log(size): every halving of the edge is roughly a 4.5x
+/// saving, measured below. The resulting upscale softens
 /// every photo slightly, including at the south pole where the quantum step is exactly
 /// the identity.
 /// </para>
@@ -28,9 +28,12 @@ public static class ScoutQuantumBlur
 {
 	/// <summary>
 	/// Resolution the blur runs at. The snapshot is scaled down to this, blurred, and
-	/// scaled back up. Measured at roughly 4.5x cheaper than the native 512.
+	/// scaled back up. Measured at roughly 30x cheaper than the native 512, and 4.5x
+	/// cheaper than the 256 this ran at until 0.1.2: at 256 the blur cost about 9 ms on a
+	/// fast desktop under a modern JIT, which on a slower machine running Unity's Mono
+	/// became a frame stall the player could feel when taking a photo.
 	/// </summary>
-	private const int ProcessResolution = 256;
+	private const int ProcessResolution = 128;
 
 	[HarmonyPatch(typeof(ProbeCamera), "TakeSnapshot")]
 	private static class TakeSnapshot_Patch

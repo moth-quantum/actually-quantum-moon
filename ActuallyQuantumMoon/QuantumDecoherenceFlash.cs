@@ -31,9 +31,11 @@ namespace ActuallyQuantumMoon;
 public static class QuantumDecoherenceFlash
 {
 	// Resolution the captured frame is blurred at before being stretched back over the
-	// screen. Matches the photo path; the destination here is the full display rather
-	// than a 512-pixel snapshot, so a lower resolution is magnified much further.
-	private const int ProcessResolution = 256;
+	// screen. Matches the photo path. The destination here is the full display rather
+	// than a 512-pixel snapshot, so this is magnified much further than a photo is - but
+	// the overlay is only visible where xi is large, and there the blur already dominates
+	// any detail the lower resolution costs, so the 4.5x saving is close to free.
+	private const int ProcessResolution = 128;
 
 	// Duration of a single flash: long enough to register, short enough to read as a
 	// glitch rather than as a stutter.
