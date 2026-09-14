@@ -16,25 +16,15 @@ namespace ActuallyQuantumMoon;
 /// once, without hooking the display code separately.
 /// </para>
 /// <para>
-/// The blur runs at <see cref="ProcessResolution"/> rather than the native 512, because
-/// the statevector holds one amplitude per pixel and a rotation is applied per qubit, so
-/// the cost goes as size^2 * log(size): every halving of the edge is roughly a 4.5x
-/// saving, measured below. The resulting upscale softens
-/// every photo slightly, including at the south pole where the quantum step is exactly
-/// the identity.
+/// The circuit cannot be run at the snapshot's own resolution - 512 costs around 65 ms
+/// against 2 ms for 128 - so it runs on a small grid and
+/// <see cref="QuantumBlurTransfer"/> carries the result back onto the full-resolution
+/// photo. The photo itself is never resampled, so at the south pole, where the quantum
+/// step is the identity, the snapshot comes back exactly as it was rendered.
 /// </para>
 /// </remarks>
 public static class ScoutQuantumBlur
 {
-	/// <summary>
-	/// Resolution the blur runs at. The snapshot is scaled down to this, blurred, and
-	/// scaled back up. Measured at roughly 30x cheaper than the native 512, and 4.5x
-	/// cheaper than the 256 this ran at until 0.1.2: at 256 the blur cost about 9 ms on a
-	/// fast desktop under a modern JIT, which on a slower machine running Unity's Mono
-	/// became a frame stall the player could feel when taking a photo.
-	/// </summary>
-	private const int ProcessResolution = 128;
-
 	[HarmonyPatch(typeof(ProbeCamera), "TakeSnapshot")]
 	private static class TakeSnapshot_Patch
 	{
@@ -62,23 +52,22 @@ public static class ScoutQuantumBlur
 	private static void ApplyQuantumBlur(RenderTexture snapshot, float xi)
 	{
 		Texture2D working = null;
-		RenderTexture downsampled = RenderTexture.GetTemporary(
-			ProcessResolution, ProcessResolution, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+		int width = snapshot.width, height = snapshot.height;
 
 		try
 		{
-			// GPU-downsample the native render into the processing resolution.
-			Graphics.Blit(snapshot, downsampled);
-
+			// Read the snapshot at its own resolution: the grid the circuit runs on is
+			// sampled from these pixels on the CPU, so there is no downsampled render
+			// target any more.
 			RenderTexture previousActive = RenderTexture.active;
-			RenderTexture.active = downsampled;
-			working = new Texture2D(ProcessResolution, ProcessResolution, TextureFormat.RGBA32, false);
-			working.ReadPixels(new Rect(0, 0, ProcessResolution, ProcessResolution), 0, 0);
+			RenderTexture.active = snapshot;
+			working = new Texture2D(width, height, TextureFormat.RGBA32, false);
+			working.ReadPixels(new Rect(0, 0, width, height), 0, 0);
 			working.Apply();
 			RenderTexture.active = previousActive;
 
 			Color32[] pixels = working.GetPixels32();
-			QuantumBlur.Apply(pixels, ProcessResolution, xi);
+			QuantumBlurTransfer.Apply(pixels, width, height, xi);
 			working.SetPixels32(pixels);
 			working.Apply();
 
@@ -96,7 +85,6 @@ public static class ScoutQuantumBlur
 		}
 		finally
 		{
-			RenderTexture.ReleaseTemporary(downsampled);
 			if (working != null) UnityEngine.Object.Destroy(working);
 		}
 	}

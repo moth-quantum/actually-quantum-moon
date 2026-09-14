@@ -30,12 +30,12 @@ namespace ActuallyQuantumMoon;
 /// </remarks>
 public static class QuantumDecoherenceFlash
 {
-	// Resolution the captured frame is blurred at before being stretched back over the
-	// screen. Matches the photo path. The destination here is the full display rather
-	// than a 512-pixel snapshot, so this is magnified much further than a photo is - but
-	// the overlay is only visible where xi is large, and there the blur already dominates
-	// any detail the lower resolution costs, so the 4.5x saving is close to free.
-	private const int ProcessResolution = 128;
+	// Resolution the frame is captured at before being stretched back over the screen.
+	// The circuit itself runs on QuantumBlurTransfer's much smaller grid whatever this
+	// is, so this sets the detail of the overlay rather than the cost of the quantum
+	// step; capturing a whole widescreen frame instead would multiply the per-pixel work
+	// by eight for detail that is on screen for a third of a second.
+	private const int CaptureResolution = 512;
 
 	// Duration of a single flash: long enough to register, short enough to read as a
 	// glitch rather than as a stutter.
@@ -155,7 +155,7 @@ public static class QuantumDecoherenceFlash
 		QuantumDecoherenceFlashEffect effect = EnsureEffect();
 		if (effect == null) return;
 
-		effect.Trigger(xi, ProcessResolution, FlashDuration, Mathf.Clamp01(xi * OpacityRampGain));
+		effect.Trigger(xi, CaptureResolution, FlashDuration, Mathf.Clamp01(xi * OpacityRampGain));
 
 		// The tone accompanies the picture so the two read as one event. It layers over
 		// the game's ambience rather than ducking it.
@@ -349,7 +349,7 @@ public class QuantumDecoherenceFlashEffect : MonoBehaviour
 			RenderTexture.active = previousActive;
 
 			Color32[] pixels = _frame.GetPixels32();
-			QuantumBlur.Apply(pixels, _resolution, _xi);
+			QuantumBlurTransfer.Apply(pixels, _resolution, _resolution, _xi);
 			_frame.SetPixels32(pixels);
 			_frame.Apply();
 

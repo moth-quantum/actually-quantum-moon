@@ -63,9 +63,8 @@ public static class EntanglementMoonShell
 	private static EntanglementCap _capNear;
 	private static EntanglementCap _capProxy;
 
-	// Stock shader, confirmed present in Outer Wilds 1.1.16 by enumerating
-	// Resources.FindObjectsOfTypeAll<Shader>() in the running game: 278 shaders, this
-	// among them, with _MainTex, _TintColor and a single pass. Single-pass matters, since
+	// Stock shader, found by enumerating Resources.FindObjectsOfTypeAll<Shader>() in the
+	// running game: _MainTex, _TintColor and a single pass. Single-pass matters, since
 	// Outer Wilds/Particles/Alpha reports two and would draw the shell twice.
 	//
 	// Alpha-blended rather than additive. Blend mode is baked into each borrowed shader,
@@ -83,7 +82,7 @@ public static class EntanglementMoonShell
 	// Verified in game rather than assumed: at gain 1 the shell is visibly about twice as
 	// bright, which is only possible if the shader's factor of 2 is present. This is a
 	// correction constant rather than a look parameter - changing it invalidates the
-	// brightness claims made in the code and in ENTANGLEMENT_RENDERING.tex.
+	// brightness claims made elsewhere in this file.
 	private const float LegacyGain = 2f;
 
 	private static GameObject _nearShell;
@@ -381,9 +380,9 @@ public static class EntanglementMoonShell
 			Console.WriteLine(
 				$"[ActuallyQuantumMoon] '{RampShaderAlpha}' is not in this build of the " +
 				"game, so there is nothing to draw the shell with - it is DISABLED. " +
-				"It was confirmed present in 1.1.16; if the game has been updated, " +
-				"enumerate Resources.FindObjectsOfTypeAll<Shader>() in a running game to " +
-				"find a replacement.",
+				"If the game has been updated, enumerate " +
+				"Resources.FindObjectsOfTypeAll<Shader>() in a running game to find a " +
+				"replacement.",
 				MessageType.Error);
 			return false;
 		}

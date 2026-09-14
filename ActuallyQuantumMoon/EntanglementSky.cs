@@ -51,8 +51,8 @@ internal static class EntanglementSky
 {
 	private const string RampFileName = "Assets/entanglement_transmittance_ramp.bin";
 
-	// Present in Outer Wilds 1.1.16 alongside the alpha-blended shader the shell uses:
-	// single pass, _MainTex, _TintColor.
+	// The additive counterpart of the alpha-blended shader the shell uses: single pass,
+	// _MainTex, _TintColor.
 	private const string AdditiveShader = "Legacy Shaders/Particles/Additive";
 
 	// Ring count. See the class remarks for why the sky needs far more than the shell.
