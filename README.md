@@ -1,3 +1,4 @@
+![Actually Quantum Moon](thumbnail.jpg)
 # Actually Quantum Moon
 
 An [Outer Wilds](https://www.mobiusdigitalgames.com/outer-wilds.html) mod that paints the
