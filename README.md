@@ -47,9 +47,6 @@ probability sin²(θ/2). The same θ also sets how strong the blur is.
 1. Install the [Outer Wilds Mod Manager](https://outerwildsmods.com/)
 2. Find Actually Quantum Moon in the mod list and install it
 
-If you'd rather do it by hand, grab the latest release and unzip it into OWML's `Mods`
-folder.
-
 ## Settings
 
 There are only two. You can change them in the in-game mod settings (or in `config.json`),
