@@ -23,7 +23,7 @@ public class ActuallyQuantumMoon : ModBehaviour
 	{
 		ModHelper.Console.WriteLine($"{nameof(ActuallyQuantumMoon)} loaded.", MessageType.Success);
 
-		new Harmony("MothQuantum.ActuallyQuantumMoon").PatchAll(Assembly.GetExecutingAssembly());
+		new Harmony("Moth.ActuallyQuantumMoon").PatchAll(Assembly.GetExecutingAssembly());
 
 		OnCompleteSceneLoad(OWScene.TitleScreen, OWScene.TitleScreen);
 		LoadManager.OnCompleteSceneLoad += OnCompleteSceneLoad;

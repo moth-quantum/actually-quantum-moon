@@ -1,4 +1,3 @@
-// (C) Copyright Moth Quantum 2026.
 // (C) Copyright IBM 2020s. (Original QuantumBlur / Qiskit)
 // Apache-2.0 (full text in the LICENSE file shipped with this mod)
 //

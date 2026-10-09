@@ -5,7 +5,7 @@
     <AssemblyName>ActuallyQuantumMoon</AssemblyName>
     <RootNamespace>ActuallyQuantumMoon</RootNamespace>
     <LangVersion>latest</LangVersion>
-    <Copyright>Copyright © 2026 Moth Quantum</Copyright>
+    <Copyright>Copyright © 2026 Moth Limited</Copyright>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>

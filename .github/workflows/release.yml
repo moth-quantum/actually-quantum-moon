@@ -16,7 +16,7 @@ permissions:
 env:
   # PROJ_USERNAME.PROJ_NAME must equal manifest.json's uniqueName: that is the name
   # the mod database and the mod manager index the release under.
-  PROJ_USERNAME: MothQuantum
+  PROJ_USERNAME: Moth
   PROJ_NAME: ActuallyQuantumMoon
 
 jobs:

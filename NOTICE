@@ -1,7 +1,7 @@
 Actually Quantum Moon
-Copyright 2026 Moth Quantum
+Copyright 2026 Moth Limited
 
-This product includes software developed at Moth Quantum
+This product includes software developed at Moth Limited
 (https://mothquantum.com).
 
 ------------------------------------------------------------------------------
@@ -20,7 +20,6 @@ MicroMoth (ActuallyQuantumMoon/ThirdParty/MicroMoth.cs)
 QuantumBlur (ActuallyQuantumMoon/QuantumBlur.cs)
   A C# port, with modifications, of https://github.com/moth-quantum/QuantumBlur,
   which is itself derived from Qiskit.
-  (C) Copyright Moth Quantum 2026.
   (C) Copyright IBM 2020s. (Original quantumblur.py)
   Licensed under the Apache License, Version 2.0 - the same licence as this
   distribution as a whole, so the LICENSE file shipped here is its licence
