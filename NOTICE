@@ -10,7 +10,7 @@ Third-party code included in this distribution
 
 MicroMoth (ActuallyQuantumMoon/ThirdParty/MicroMoth.cs)
   Vendored, with modifications, from https://github.com/moth-quantum/MicroMoth
-  (C) Copyright Moth 2026.
+  (C) Copyright Moth Limited 2026.
   (C) Copyright IBM 2023. (Original MicroQiskit)
   Licensed under the Apache License, Version 2.0 - the same licence as this
   distribution as a whole, so the LICENSE file shipped here is its licence
